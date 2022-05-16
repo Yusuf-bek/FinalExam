@@ -82,3 +82,26 @@ class ProductPageStyles extends MyTextStyles {
     fontWeight: FontWeight.w400,
   );
 }
+
+class VideoPageStyles extends MyTextStyles {
+  VideoPageStyles._init();
+  static final VideoPageStyles _instance = VideoPageStyles._init();
+  static VideoPageStyles get instance => _instance;
+
+  TextStyle themeStyle = const TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
+  );
+
+  TextStyle descriptionStyle = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: ConstColors.instance.videoDescription,
+  );
+
+  TextStyle usernameStyle = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: ConstColors.instance.videoDescription
+  );
+}

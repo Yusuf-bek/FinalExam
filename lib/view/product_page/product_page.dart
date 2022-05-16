@@ -17,8 +17,8 @@ class ProductPage extends StatelessWidget {
             appBar(context),
             Expanded(
               child: ListView.builder(
-                itemCount: 5,
-                itemBuilder: (context, index) => CourseLessonsWidget(),
+                itemCount: 7,
+                itemBuilder: (context, index) => const CourseLessonsWidget(),
               ),
             ),
           ],
@@ -43,7 +43,7 @@ class ProductPage extends StatelessWidget {
                 onPressed: () {},
                 icon: const Icon(
                   Icons.arrow_back,
-                  size: 25,
+                  size: 28,
                 ),
               ),
             ),
