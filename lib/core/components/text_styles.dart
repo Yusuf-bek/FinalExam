@@ -29,21 +29,56 @@ class HomePageStyles extends MyTextStyles {
     fontWeight: FontWeight.w500,
   );
 
-  TextStyle courseName = const  TextStyle(
+  TextStyle courseName = const TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w700,
-
   );
 
-  TextStyle courseDegree =  TextStyle(
+  TextStyle courseDegree = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w400,
     color: ConstColors.instance.courseDegreeInfo,
   );
 
-  TextStyle courseHappinessPercentage =  TextStyle(
+  TextStyle courseHappinessPercentage = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w700,
     color: ConstColors.instance.primaryColor,
+  );
+}
+
+class ProductPageStyles extends MyTextStyles {
+  ProductPageStyles._init();
+  static final ProductPageStyles _instance = ProductPageStyles._init();
+  static ProductPageStyles get instance => _instance;
+
+  TextStyle courseHeadline = const TextStyle(
+    fontSize: 25,
+    fontWeight: FontWeight.w700,
+  );
+
+  TextStyle lessonTheme = const TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w700,
+  );
+
+  TextStyle lessonAuthor = TextStyle(
+      fontSize: 12,
+      fontWeight: FontWeight.w400,
+      color: ConstColors.instance.videoDescription);
+
+  TextStyle lessonDate = TextStyle(
+      fontSize: 12,
+      fontWeight: FontWeight.w400,
+      color: ConstColors.instance.videoDescription);
+
+  TextStyle minutStyle = const TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+  );
+
+  TextStyle alertDialogInstruction = const TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
   );
 }
