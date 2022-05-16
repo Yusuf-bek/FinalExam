@@ -2,6 +2,7 @@ import 'package:exam/core/components/size_config.dart';
 import 'package:exam/core/components/text_styles.dart';
 import 'package:exam/core/constants/colors.dart';
 import 'package:exam/core/widgets/category_widget.dart';
+import 'package:exam/core/widgets/course_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -61,7 +62,9 @@ class HomePage extends StatelessWidget {
                   child: ListView.separated(
                     itemCount: 3,
                     itemBuilder: ((context, index) {
-                      return const CourseWidget();
+                      return  CourseWidget(onTap: (() {
+                        
+                      }),);
                     }),
                     separatorBuilder: (context, index) {
                       return SizedBox(
