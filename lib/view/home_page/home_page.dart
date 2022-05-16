@@ -1,18 +1,34 @@
+
 import 'package:exam/core/components/size_config.dart';
 import 'package:exam/core/components/text_styles.dart';
 import 'package:exam/core/constants/colors.dart';
 import 'package:exam/core/widgets/category_widget.dart';
 import 'package:exam/core/widgets/course_widget.dart';
+import 'package:exam/cubit/categories/categories_cubit.dart';
+import 'package:exam/cubit/categories/categories_state.dart';
+import 'package:exam/view/home_page/widgets/courses_builder.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
-  List categoriesTexts = ["Dasturlash", "Dizayn", "SMM", "Til kurslari"];
+  List categoriesTexts = ["Dizayn","Dasturlash", "SMM", "Til kurslari"];
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    return BlocProvider(
+      create: (context) {
+        return CategoriesCubit(CategoriesInitialState());
+      },
+      child: Builder(
+        builder: (context) => getScaffold(context),
+      ),
+    );
+  }
+
+  Scaffold getScaffold(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -46,34 +62,18 @@ class HomePage extends StatelessWidget {
                 ),
                 child: searchContainer(),
               ),
-              categories(),
+              categories(context),
               Padding(
                 padding: EdgeInsets.only(
                   top: getHeightConfig(24),
                   bottom: getHeightConfig(14),
                 ),
                 child: Text(
-                  "Dizaynga oid kurslar",
+                  "${categoriesTexts[context.watch<CategoriesCubit>().choosenIndex]}ga oid kurslar",
                   style: HomePageStyles.instance.dizayngaOid,
                 ),
               ),
-              Expanded(
-                child: SizedBox(
-                  child: ListView.separated(
-                    itemCount: 3,
-                    itemBuilder: ((context, index) {
-                      return  CourseWidget(onTap: (() {
-                        
-                      }),);
-                    }),
-                    separatorBuilder: (context, index) {
-                      return SizedBox(
-                        height: getHeightConfig(11),
-                      );
-                    },
-                  ),
-                ),
-              ),
+              const CoursesBuilder(),
             ],
           ),
         ),
@@ -81,7 +81,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  SizedBox categories() {
+  SizedBox categories(BuildContext context) {
     return SizedBox(
       height: getHeightConfig(98),
       width: double.infinity,
@@ -90,8 +90,11 @@ class HomePage extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
             return CategoryWidget(
+              color: context.watch<CategoriesCubit>().colors[index],
               text: categoriesTexts[index],
-              onTap: () {},
+              onTap: () {
+                context.read<CategoriesCubit>().selectOne(index);
+              },
             );
           }),
     );

@@ -6,11 +6,13 @@ import 'package:flutter/material.dart';
 class CategoryWidget extends StatelessWidget {
   String text;
   Function() onTap;
+  Color color;
 
   CategoryWidget({
     Key? key,
     required this.text,
     required this.onTap,
+    required this.color,
   }) : super(key: key);
 
   @override
@@ -30,7 +32,7 @@ class CategoryWidget extends StatelessWidget {
               width: getWidthConfig(71),
               height: getHeightConfig(72),
               decoration: BoxDecoration(
-                color: ConstColors.instance.containerInside,
+                color: color,
                 borderRadius: BorderRadius.circular(16),
               ),
             ),
