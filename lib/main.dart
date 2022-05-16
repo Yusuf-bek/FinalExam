@@ -1,4 +1,5 @@
 import 'package:exam/core/constants/colors.dart';
+import 'package:exam/view/home_page/home_page.dart';
 import 'package:exam/view/loader_page/loader_page.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         primaryColor: ConstColors.instance.loaderBackground,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: LoaderPage(),
+      home: HomePage(),
     );
   }
 }
