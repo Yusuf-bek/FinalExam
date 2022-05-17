@@ -1,28 +1,47 @@
 import 'package:exam/core/components/size_config.dart';
 import 'package:exam/core/components/text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class VideoPage extends StatelessWidget {
+class VideoPage extends StatefulWidget {
   const VideoPage({Key? key}) : super(key: key);
+
+  @override
+  State<VideoPage> createState() => _VideoPageState();
+}
+
+class _VideoPageState extends State<VideoPage> {
+  late YoutubePlayerController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    String url = "https://www.youtube.com/watch?v=CijV5FHiOOE&list=PLQWSb1rBptoJ8hUUpxCXnJBcv_gnc2FY5";
+    controller = YoutubePlayerController(
+        initialVideoId: YoutubePlayer.convertUrlToId(url)!);
+  }
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: getHeightConfig(211),
-              color: Colors.green,
-            ),
-            lessonDescriptionExpanded(),
-          ],
+    return YoutubePlayerBuilder(
+      player: YoutubePlayer(
+        controller: controller,
+      ),
+      builder: (context, player) => Scaffold(
+        body: SafeArea(
+          child: Column(
+            children: [
+              player,
+              lessonDescriptionExpanded(),
+            ],
+          ),
         ),
       ),
     );
   }
+
+  
 
   Expanded lessonDescriptionExpanded() {
     return Expanded(

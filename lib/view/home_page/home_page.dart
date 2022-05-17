@@ -13,7 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
-  List categoriesTexts = ["Dizayn","Dasturlash", "SMM", "Til kurslari"];
+  List categoriesTexts = ["Dasturlash","Dizayn", "SMM", "Til kurslari"];
 
   @override
   Widget build(BuildContext context) {

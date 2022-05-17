@@ -17,7 +17,7 @@ class ProductPage extends StatelessWidget {
             appBar(context),
             Expanded(
               child: ListView.builder(
-                itemCount: 7,
+                itemCount: 3,
                 itemBuilder: (context, index) => const CourseLessonsWidget(),
               ),
             ),
@@ -40,7 +40,9 @@ class ProductPage extends StatelessWidget {
             Positioned(
               left: getWidthConfig(10),
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context);
+                },
                 icon: const Icon(
                   Icons.arrow_back,
                   size: 28,
@@ -121,7 +123,9 @@ class ProductPage extends StatelessWidget {
                     left: getWidthConfig(28),
                     bottom: getHeightConfig(0),
                     child: Text(
-                        "Videoni onlayn ko`rish uchun esa umumiy blok ustiga bosing!", style: ProductPageStyles.instance.alertDialogInstruction,),
+                      "Videoni onlayn ko`rish uchun esa umumiy blok ustiga bosing!",
+                      style: ProductPageStyles.instance.alertDialogInstruction,
+                    ),
                   ),
                 ],
               ),

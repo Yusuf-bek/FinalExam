@@ -13,10 +13,17 @@ class CoursesBuilder extends StatelessWidget {
     return Expanded(
       child: SizedBox(
         child: ListView.separated(
-          itemCount: 3,
+          itemCount: 1,
           itemBuilder: ((context, index) {
             return CourseWidget(
-              onTap: (() {}),
+              title: "Raspberr PI bilan Tarmoq havfsizligi",
+              courseDegree: "Boshlang'ich",
+              imgLink: "https://thumbs.dreamstime.com/b/raspberry-pi-chip-set-electronic-board-59743570.jpg",
+              
+              onTap: (() {
+
+                Navigator.pushNamed(context, "/product");
+              }),
             );
           }),
           separatorBuilder: (context, index) {

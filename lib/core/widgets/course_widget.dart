@@ -6,9 +6,16 @@ import 'package:flutter/material.dart';
 
 class CourseWidget extends StatelessWidget {
   Function() onTap;
+  String title;
+  String courseDegree;
+  String imgLink;
+
   CourseWidget({
     Key? key,
-    required this.onTap
+    required this.onTap,
+    required this.title,
+    required this.courseDegree,
+    required this.imgLink,
   }) : super(key: key);
 
   @override
@@ -25,10 +32,11 @@ class CourseWidget extends StatelessWidget {
         ),
         child: Padding(
           padding: EdgeInsets.only(
-              top: getHeightConfig(7),
-              right: getWidthConfig(6),
-              left: getWidthConfig(8),
-              bottom: getHeightConfig(8)),
+            top: getHeightConfig(7),
+            right: getWidthConfig(6),
+            left: getWidthConfig(8),
+            bottom: getHeightConfig(8),
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -39,15 +47,19 @@ class CourseWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.green,
                   borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(
+                    image: NetworkImage(imgLink,),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               const SizedBox(),
               Text(
-                "UX/UI dizayn",
+                title,
                 style: HomePageStyles.instance.courseName,
               ),
               Text(
-                "Boshlang'ich darajadagilar uchun",
+                courseDegree,
                 style: HomePageStyles.instance.courseDegree,
               ),
               SizedBox(
